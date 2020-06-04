@@ -31,14 +31,14 @@ class EpisodeRVAdapter(private var activity: Activity) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title?.text = episodes?.get(position)?.title
         holder.subTitle?.text = episodes?.get(position)?.channel?.title
-        Picasso.get().load(episodes?.get(position)?.coverAsset?.url).fit().into(holder.image)
+        Picasso.get().load(episodes?.get(position)?.coverAsset?.url).noPlaceholder()
+            .resize(608, 912).into(holder.image)
     }
 
     fun setData(data: List<NewEpisodeResponseDataMedia>) {
         episodes = data as MutableList<NewEpisodeResponseDataMedia>
         notifyDataSetChanged()
     }
-
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var title: TextView? = null

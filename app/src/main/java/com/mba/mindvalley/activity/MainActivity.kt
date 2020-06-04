@@ -1,6 +1,7 @@
 package com.mba.mindvalley.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainActivityVM: MainActivityVM
-    var episodeRVAdapter: EpisodeRVAdapter? = null
+    private var episodeRVAdapter: EpisodeRVAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,12 @@ class MainActivity : AppCompatActivity() {
         mainActivityVM.newEpisodeResponseSuccess.observe(this, Observer { response ->
             episodeRVAdapter?.setData(response)
         })
+
+        mainActivityVM.newEpisodeResponseError.observe(this, Observer { error ->
+            Toast.makeText(this, "Episode Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
+                .show()
+        })
+
         mainActivityVM.getNewEpisodeData()
     }
 }

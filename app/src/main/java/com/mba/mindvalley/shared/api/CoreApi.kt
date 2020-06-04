@@ -8,4 +8,7 @@ import retrofit2.http.GET
 interface CoreApi {
     @GET("/raw/z5AExTtw")
     fun getNewEpisodesAsync(): Deferred<Response<NewEpisodeResponse>>
+
+    @GET("/raw/A0CgArX3")
+    fun getCategoriesAsync(): Deferred<Response<NewEpisodeResponse>>
 }

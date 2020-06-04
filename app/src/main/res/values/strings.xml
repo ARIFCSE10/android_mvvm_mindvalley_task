@@ -2,4 +2,5 @@
     <string name="app_name">Mindvalley</string>
     <string name="new_episodes">New Episodes</string>
     <string name="channels">Channels</string>
+    <string name="browse_by_categories">Browse by categories</string>
 </resources>
