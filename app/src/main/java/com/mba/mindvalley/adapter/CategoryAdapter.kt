@@ -24,7 +24,6 @@ class CategoryAdapter(private var activity: Activity) : BaseAdapter() {
         } else {
             grid = convertView
         }
-
         return grid
     }
 
