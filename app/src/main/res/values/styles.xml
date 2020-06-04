@@ -88,7 +88,7 @@
     <style name="category_text">
         <item name="android:textSize">18sp</item>
         <item name="android:letterSpacing" tools:targetApi="lollipop">0.01</item>
-        <item name="android:textColor">#95989D</item>
+        <item name="android:textColor">#FFFFFF</item>
     </style>
 
 </resources>

@@ -75,19 +75,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/category_rv"
+        <com.mba.mindvalley.extension.ExpandedGridView
+            android:id="@+id/category_gv"
+            android:layout_height="match_parent"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="48dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/new_episode_rv"
+            android:horizontalSpacing="16dp"
+            android:nestedScrollingEnabled="false"
+            android:numColumns="2"
+            android:paddingBottom="48dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="NestedScrolling"
+            tools:targetApi="lollipop" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
