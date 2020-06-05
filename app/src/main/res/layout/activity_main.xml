@@ -54,9 +54,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:numColumns="1"
-            android:orientation="vertical"
-            android:stretchMode="columnWidth"
-            tools:targetApi="lollipop" />
+            android:stretchMode="columnWidth" />
 
         <TextView
             android:id="@+id/textView"

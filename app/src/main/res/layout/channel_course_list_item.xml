@@ -14,31 +14,21 @@
         app:cardElevation="2dp">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/series_image"
+            android:id="@+id/course_image_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY" />
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/series_title"
+        android:id="@+id/course_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
-        android:maxLines="2"
+        android:maxLines="3"
         android:text=""
-        android:textAppearance="@style/episode_list_title" />
-
-    <TextView
-        android:id="@+id/episode_sub_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
-        android:maxLines="2"
-        android:text=""
-        android:textAppearance="@style/episode_list_sub_title" />
+        android:textAppearance="@style/channel_list_title" />
 
 
 </LinearLayout>

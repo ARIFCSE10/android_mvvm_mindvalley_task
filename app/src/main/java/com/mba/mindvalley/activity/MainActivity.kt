@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         mainActivityVM.getCategoryData()
 
 //        Channel
-
         mainActivityVM.channelResponseSuccess.observe(this, Observer { response ->
             channelParentAdapter?.setData(response)
         })

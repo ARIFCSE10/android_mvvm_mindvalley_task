@@ -46,9 +46,9 @@ class EpisodeRVAdapter(private var activity: Activity) :
         var image: ImageView? = null
 
         init {
-            this.title = view.episode_title
+            this.title = view.series_title
             this.subTitle = view.episode_sub_title
-            this.image = view.episode_image
+            this.image = view.series_image
         }
     }
 }
