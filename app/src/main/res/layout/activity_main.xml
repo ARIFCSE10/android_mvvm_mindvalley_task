@@ -1,84 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pull_to_refresh_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundColor">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".activity.MainActivity">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor">
 
-        <TextView
-            android:id="@+id/header_tv"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/channels"
-            android:textAppearance="@style/header" />
+            android:orientation="vertical"
+            tools:context=".activity.MainActivity">
 
-        <TextView
-            android:id="@+id/new_episode_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/new_episodes"
-            android:textAppearance="@style/episode_header" />
+            <TextView
+                android:id="@+id/header_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/channels"
+                android:textAppearance="@style/header" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/new_episode_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal" />
+            <TextView
+                android:id="@+id/new_episode_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/new_episodes"
+                android:textAppearance="@style/episode_header" />
 
-        <View
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/barColor" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/new_episode_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/channels_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:numColumns="1"
-            android:stretchMode="columnWidth" />
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/barColor" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/browse_by_categories"
-            android:textAppearance="@style/category_header" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/channels_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:numColumns="1"
+                android:stretchMode="columnWidth" />
 
-        <com.mba.mindvalley.extension.ExpandedGridView
-            android:id="@+id/category_gv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="center"
-            android:horizontalSpacing="16dp"
-            android:numColumns="2"
-            android:paddingBottom="48dp"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="16dp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/browse_by_categories"
+                android:textAppearance="@style/category_header" />
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <com.mba.mindvalley.extension.ExpandedGridView
+                android:id="@+id/category_gv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:horizontalSpacing="16dp"
+                android:numColumns="2"
+                android:paddingBottom="48dp"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="16dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -24,6 +24,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setupViewModel()
         setupRecycleView()
+        initPullToRefresh()
+        loadPageData()
+    }
+
+    private fun initPullToRefresh() {
+        pull_to_refresh_layout.setOnRefreshListener {
+            loadPageData()
+        }
+    }
+
+    private fun loadPageData() {
+        mainActivityVM.getChannelData()
+        mainActivityVM.getNewEpisodeData()
+        mainActivityVM.getCategoryData()
     }
 
     private fun setupRecycleView() {
@@ -48,37 +62,37 @@ class MainActivity : AppCompatActivity() {
 //        Episodes
         mainActivityVM.newEpisodeResponseSuccess.observe(this, Observer { response ->
             episodeRVAdapter?.setData(response)
+            pull_to_refresh_layout.isRefreshing = false
         })
 
         mainActivityVM.newEpisodeResponseError.observe(this, Observer { error ->
             Toast.makeText(this, "Episode Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
                 .show()
+            pull_to_refresh_layout.isRefreshing = false
         })
-
-        mainActivityVM.getNewEpisodeData()
 
 //        Categories
         mainActivityVM.categoryResponseSuccess.observe(this, Observer { response ->
             categoryAdapter?.setData(response)
+            pull_to_refresh_layout.isRefreshing = false
         })
 
         mainActivityVM.categoryResponseError.observe(this, Observer { error ->
             Toast.makeText(this, "Category Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
                 .show()
+            pull_to_refresh_layout.isRefreshing = false
         })
-
-        mainActivityVM.getCategoryData()
 
 //        Channel
         mainActivityVM.channelResponseSuccess.observe(this, Observer { response ->
             channelParentAdapter?.setData(response)
+            pull_to_refresh_layout.isRefreshing = false
         })
 
         mainActivityVM.categoryResponseError.observe(this, Observer { error ->
             Toast.makeText(this, "Channel Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
                 .show()
+            pull_to_refresh_layout.isRefreshing = false
         })
-
-        mainActivityVM.getChannelData()
     }
 }

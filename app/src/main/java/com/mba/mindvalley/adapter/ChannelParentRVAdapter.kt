@@ -35,12 +35,12 @@ class ChannelParentRVAdapter(private var activity: Activity) :
         holder.subHeader?.text = getSubHeaderText(position)
 
         if (!channels?.get(position)?.iconAsset?.thumbnailUrl.isNullOrEmpty()) {
-            Picasso.get().load(channels?.get(position)?.iconAsset?.thumbnailUrl).noPlaceholder()
-                .resize(50, 50)
+            Picasso.get().load(channels?.get(position)?.iconAsset?.thumbnailUrl)
+                .placeholder(R.drawable.placeholder_icon)
                 .into(holder.icon)
         } else if (!channels?.get(position)?.iconAsset?.url.isNullOrEmpty()) {
-            Picasso.get().load(channels?.get(position)?.iconAsset?.url).noPlaceholder()
-                .resize(50, 50)
+            Picasso.get().load(channels?.get(position)?.iconAsset?.url)
+                .placeholder(R.drawable.placeholder_icon)
                 .into(holder.icon)
         }
 

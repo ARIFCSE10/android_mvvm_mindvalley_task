@@ -11,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 object ApiFactory {
-    private var cacheSize = (10 * 1024 * 1024).toLong() // 10 MB
+    private var cacheSize = (25 * 1024 * 1024).toLong() // 25 MB
 
     private var cache: Cache = Cache(App.applicationContext().cacheDir, cacheSize)
 
