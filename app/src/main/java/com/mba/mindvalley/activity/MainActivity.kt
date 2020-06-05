@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mba.mindvalley.R
 import com.mba.mindvalley.adapter.CategoryAdapter
-import com.mba.mindvalley.adapter.ChannelParentGVAdapter
+import com.mba.mindvalley.adapter.ChannelParentRVAdapter
 import com.mba.mindvalley.adapter.EpisodeRVAdapter
 import com.mba.mindvalley.viewmodel.MainActivityVM
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainActivityVM: MainActivityVM
     private var episodeRVAdapter: EpisodeRVAdapter? = null
     private var categoryAdapter: CategoryAdapter? = null
-    private var channelParentAdapter: ChannelParentGVAdapter? = null
+    private var channelParentAdapter: ChannelParentRVAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
         category_gv.adapter = categoryAdapter
 
 
-        channelParentAdapter = ChannelParentGVAdapter(this)
-//        channels_rv.layoutManager =
-//            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        channelParentAdapter = ChannelParentRVAdapter(this)
+        channels_rv.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         channels_rv.adapter = channelParentAdapter
     }
 
