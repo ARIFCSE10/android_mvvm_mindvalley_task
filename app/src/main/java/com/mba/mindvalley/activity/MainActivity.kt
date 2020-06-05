@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.daimajia.androidanimations.library.Techniques
+import com.daimajia.androidanimations.library.YoYo
 import com.mba.mindvalley.R
 import com.mba.mindvalley.adapter.CategoryAdapter
 import com.mba.mindvalley.adapter.ChannelParentRVAdapter
@@ -14,6 +16,10 @@ import com.mba.mindvalley.viewmodel.MainActivityVM
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val animationCurveEpisode = Techniques.SlideInRight
+    private val animationDurationEpisode: Long = 700
+    private val animationCurveChannel = Techniques.SlideInRight
+    private val animationDurationChannel: Long = 1000
     private lateinit var mainActivityVM: MainActivityVM
     private var episodeRVAdapter: EpisodeRVAdapter? = null
     private var categoryAdapter: CategoryAdapter? = null
@@ -61,6 +67,11 @@ class MainActivity : AppCompatActivity() {
 
 //        Episodes
         mainActivityVM.newEpisodeResponseSuccess.observe(this, Observer { response ->
+            runOnUiThread {
+                YoYo.with(animationCurveEpisode)
+                    .duration(animationDurationEpisode)
+                    .playOn(new_episode_rv)
+            }
             episodeRVAdapter?.setData(response)
             pull_to_refresh_layout.isRefreshing = false
         })
@@ -85,6 +96,11 @@ class MainActivity : AppCompatActivity() {
 
 //        Channel
         mainActivityVM.channelResponseSuccess.observe(this, Observer { response ->
+            runOnUiThread {
+                YoYo.with(animationCurveChannel)
+                    .duration(animationDurationChannel)
+                    .playOn(channels_rv)
+            }
             channelParentAdapter?.setData(response)
             pull_to_refresh_layout.isRefreshing = false
         })

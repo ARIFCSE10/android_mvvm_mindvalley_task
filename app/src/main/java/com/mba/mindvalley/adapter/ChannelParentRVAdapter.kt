@@ -39,12 +39,16 @@ class ChannelParentRVAdapter(private var activity: Activity) :
             holder.icon?.let {
                 Glide.with(activity).load(channels?.get(position)?.iconAsset?.thumbnailUrl)
                     .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .placeholder(R.drawable.placeholder_icon)
+                    .error(R.drawable.placeholder_icon)
                     .into(it)
             }
         } else if (!channels?.get(position)?.iconAsset?.url.isNullOrEmpty()) {
             holder.icon?.let {
                 Glide.with(activity).load(channels?.get(position)?.iconAsset?.url)
                     .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .placeholder(R.drawable.placeholder_icon)
+                    .error(R.drawable.placeholder_icon)
                     .into(it)
             }
         }
