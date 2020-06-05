@@ -1,6 +1,7 @@
 package com.mba.mindvalley.shared.api
 
 import com.mba.mindvalley.model.CategoryResponse
+import com.mba.mindvalley.model.ChannelResponse
 import com.mba.mindvalley.model.NewEpisodeResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -12,4 +13,7 @@ interface CoreApi {
 
     @GET("/raw/A0CgArX3")
     fun getCategoriesAsync(): Deferred<Response<CategoryResponse>>
+
+    @GET("/raw/Xt12uVhM")
+    fun getChannelsAsync(): Deferred<Response<ChannelResponse>>
 }

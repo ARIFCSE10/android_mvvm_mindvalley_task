@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mba.mindvalley.R
 import com.mba.mindvalley.adapter.CategoryAdapter
+import com.mba.mindvalley.adapter.ChannelParentGVAdapter
 import com.mba.mindvalley.adapter.EpisodeRVAdapter
 import com.mba.mindvalley.viewmodel.MainActivityVM
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainActivityVM: MainActivityVM
     private var episodeRVAdapter: EpisodeRVAdapter? = null
     private var categoryAdapter: CategoryAdapter? = null
+    private var channelParentAdapter: ChannelParentGVAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,12 @@ class MainActivity : AppCompatActivity() {
 
         categoryAdapter = CategoryAdapter(this)
         category_gv.adapter = categoryAdapter
+
+
+        channelParentAdapter = ChannelParentGVAdapter(this)
+//        channels_rv.layoutManager =
+//            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        channels_rv.adapter = channelParentAdapter
     }
 
     private fun setupViewModel() {
@@ -60,5 +68,18 @@ class MainActivity : AppCompatActivity() {
         })
 
         mainActivityVM.getCategoryData()
+
+//        Channel
+
+        mainActivityVM.channelResponseSuccess.observe(this, Observer { response ->
+            channelParentAdapter?.setData(response)
+        })
+
+        mainActivityVM.categoryResponseError.observe(this, Observer { error ->
+            Toast.makeText(this, "Channel Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
+                .show()
+        })
+
+        mainActivityVM.getChannelData()
     }
 }

@@ -3,6 +3,7 @@ package com.mba.mindvalley.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mba.mindvalley.model.CategoryResponseDataCategory
+import com.mba.mindvalley.model.Channel
 import com.mba.mindvalley.model.NewEpisodeResponseDataMedia
 import com.mba.mindvalley.shared.api.ApiFactory
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,15 @@ class MainActivityVM : ViewModel() {
     }
 
     val categoryResponseError: MutableLiveData<Throwable> by lazy {
+        MutableLiveData<Throwable>()
+    }
+
+
+    val channelResponseSuccess: MutableLiveData<List<Channel>> by lazy {
+        MutableLiveData<List<Channel>>()
+    }
+
+    val channelResponseError: MutableLiveData<Throwable> by lazy {
         MutableLiveData<Throwable>()
     }
 
@@ -48,6 +58,20 @@ class MainActivityVM : ViewModel() {
                 categoryResponseSuccess.postValue(response.body()?.data?.categories)
             } catch (e: Exception) {
                 categoryResponseError.postValue(e)
+            }
+        }
+    }
+
+
+    fun getChannelData() {
+        val service = ApiFactory.coreApi
+        GlobalScope.launch(Dispatchers.Main) {
+            val request = service.getChannelsAsync()
+            try {
+                val response = request.await()
+                channelResponseSuccess.postValue(response.body()?.data?.channels)
+            } catch (e: Exception) {
+                channelResponseError.postValue(e)
             }
         }
     }
