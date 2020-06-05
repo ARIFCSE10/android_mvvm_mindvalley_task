@@ -27,7 +27,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="10dp"
         android:maxLines="2"
-        android:text=""
+        android:lines="2"
         android:textAppearance="@style/episode_list_title" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="12dp"
         android:maxLines="2"
-        android:text=""
+        android:lines="2"
         android:textAppearance="@style/episode_list_sub_title" />
 
 

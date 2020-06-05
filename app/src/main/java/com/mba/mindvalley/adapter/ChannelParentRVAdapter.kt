@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mba.mindvalley.R
 import com.mba.mindvalley.model.Channel
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.channel_parent_list_item.view.*
 
 class ChannelParentRVAdapter(private var activity: Activity) :
@@ -35,13 +36,17 @@ class ChannelParentRVAdapter(private var activity: Activity) :
         holder.subHeader?.text = getSubHeaderText(position)
 
         if (!channels?.get(position)?.iconAsset?.thumbnailUrl.isNullOrEmpty()) {
-            Picasso.get().load(channels?.get(position)?.iconAsset?.thumbnailUrl)
-                .placeholder(R.drawable.placeholder_icon)
-                .into(holder.icon)
+            holder.icon?.let {
+                Glide.with(activity).load(channels?.get(position)?.iconAsset?.thumbnailUrl)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(it)
+            }
         } else if (!channels?.get(position)?.iconAsset?.url.isNullOrEmpty()) {
-            Picasso.get().load(channels?.get(position)?.iconAsset?.url)
-                .placeholder(R.drawable.placeholder_icon)
-                .into(holder.icon)
+            holder.icon?.let {
+                Glide.with(activity).load(channels?.get(position)?.iconAsset?.url)
+                    .diskCacheStrategy(DiskCacheStrategy.DATA)
+                    .into(it)
+            }
         }
 
 

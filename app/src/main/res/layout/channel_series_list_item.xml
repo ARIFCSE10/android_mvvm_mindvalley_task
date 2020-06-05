@@ -28,7 +28,7 @@
         android:layout_marginTop="10dp"
         android:maxLines="2"
         android:text=""
-        android:textAppearance="@style/channel_list_title" />
+        android:textAppearance="@style/series_list_title" />
 
 
 </LinearLayout>

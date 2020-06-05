@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mba.mindvalley.R
 import com.mba.mindvalley.model.NewEpisodeResponseDataMedia
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.new_episode_list_item.view.*
 
 class EpisodeRVAdapter(private var activity: Activity) :
@@ -31,8 +32,14 @@ class EpisodeRVAdapter(private var activity: Activity) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title?.text = episodes?.get(position)?.title
         holder.subTitle?.text = episodes?.get(position)?.channel?.title
-        Picasso.get().load(episodes?.get(position)?.coverAsset?.url).noPlaceholder()
-            .resize(608, 912).into(holder.image)
+
+        holder.image?.let {
+            Glide
+                .with(activity)
+                .load(episodes?.get(position)?.coverAsset?.url)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .into(it)
+        }
     }
 
     fun setData(data: List<NewEpisodeResponseDataMedia>) {

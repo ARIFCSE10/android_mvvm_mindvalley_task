@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mba.mindvalley.R
 import com.mba.mindvalley.model.Channel
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.channel_course_list_item.view.*
 import kotlinx.android.synthetic.main.channel_series_list_item.view.*
 
@@ -35,8 +36,10 @@ class ChannelChildRVAdapter(private var activity: Activity, private var isCourse
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title?.text = channel?.latestMedia?.get(position)?.title
-        Picasso.get().load(channel?.latestMedia?.get(position)?.coverAsset?.url).noPlaceholder()
-            .resize(608, 912).into(holder.image)
+        holder.image?.let {
+            Glide.with(activity).load(channel?.latestMedia?.get(position)?.coverAsset?.url)
+                .diskCacheStrategy(DiskCacheStrategy.DATA).into(it)
+        }
     }
 
     fun setData(data: Channel) {
