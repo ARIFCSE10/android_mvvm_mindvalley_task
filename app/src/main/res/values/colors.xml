@@ -7,5 +7,6 @@
     <color name="battleShipGrey">#95989D</color>
     <color name="barColor">#3C434E</color>
     <color name="categoryBackground">#3395989D</color>
+    <color name="ripple_color">#95989D</color>
 
 </resources>
