@@ -35,30 +35,37 @@ class ChannelParentRVAdapter(private var activity: Activity) :
         holder.header?.text = channels?.get(position)?.title
         holder.subHeader?.text = getSubHeaderText(position)
 
-        if (!channels?.get(position)?.iconAsset?.thumbnailUrl.isNullOrEmpty()) {
-            holder.icon?.let {
-                Glide.with(activity).load(channels?.get(position)?.iconAsset?.thumbnailUrl)
-                    .diskCacheStrategy(DiskCacheStrategy.DATA)
-                    .placeholder(R.drawable.placeholder_icon)
-                    .error(R.drawable.placeholder_icon)
-                    .into(it)
-            }
-        } else if (!channels?.get(position)?.iconAsset?.url.isNullOrEmpty()) {
-            holder.icon?.let {
-                Glide.with(activity).load(channels?.get(position)?.iconAsset?.url)
-                    .diskCacheStrategy(DiskCacheStrategy.DATA)
-                    .placeholder(R.drawable.placeholder_icon)
-                    .error(R.drawable.placeholder_icon)
-                    .into(it)
+        holder.icon?.let { imageView ->
+            if (!channels?.get(position)?.iconAsset?.thumbnailUrl.isNullOrEmpty()) {
+                loadCachedImage(
+                    url = channels?.get(position)?.iconAsset?.thumbnailUrl,
+                    imageView = imageView,
+                    position = position
+                )
+            } else if (!channels?.get(position)?.iconAsset?.url.isNullOrEmpty()) {
+                loadCachedImage(
+                    url = channels?.get(position)?.iconAsset?.url,
+                    imageView = imageView,
+                    position = position
+                )
+            } else {
+                Glide.with(activity).load(R.drawable.placeholder_icon)
+                    .into(imageView)
             }
         }
-
 
         holder.childRV?.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         channels?.get(position)?.let { childRVAdapters?.get(position)?.setData(it) }
         holder.childRV?.adapter = childRVAdapters?.get(position)
 
+    }
+
+    private fun loadCachedImage(url: String?, imageView: ImageView, position: Int) {
+        Glide.with(activity).load(url)
+            .diskCacheStrategy(DiskCacheStrategy.DATA)
+            .placeholder(R.drawable.placeholder_icon)
+            .into(imageView)
     }
 
     fun setData(data: List<Channel>) {
