@@ -27,7 +27,6 @@ class MainActivityVM : ViewModel() {
         MutableLiveData<Throwable>()
     }
 
-
     val channelResponseSuccess: MutableLiveData<List<Channel>> by lazy {
         MutableLiveData<List<Channel>>()
     }
@@ -61,7 +60,6 @@ class MainActivityVM : ViewModel() {
             }
         }
     }
-
 
     fun getChannelData() {
         val service = ApiFactory.coreApi

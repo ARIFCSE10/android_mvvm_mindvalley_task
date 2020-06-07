@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             pull_to_refresh_layout.isRefreshing = false
         })
 
-        mainActivityVM.categoryResponseError.observe(this, Observer { error ->
+        mainActivityVM.channelResponseError.observe(this, Observer { error ->
             Toast.makeText(this, "Channel Error : ${error.localizedMessage}", Toast.LENGTH_LONG)
                 .show()
             pull_to_refresh_layout.isRefreshing = false
